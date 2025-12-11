@@ -385,5 +385,787 @@
       justify-content: center;
       font-size: 12px;
       flex-shrink: 0;
-      border: 1px solid
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .avatar-user {
+      background: radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.3) 0, rgba(37, 99, 235, 1) 55%);
+      border-color: rgba(191, 219, 254, 0.8);
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 8px 9px;
+      border-radius: 16px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .bubble-assistant {
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(55, 65, 81, 0.96);
+      color: var(--text-main);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble-user {
+      background: rgba(147, 51, 234, 0.98);
+      color: #fdf2ff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble small {
+      display: block;
+      font-size: 10px;
+      margin-top: 4px;
+      color: var(--text-soft);
+    }
+
+    .suggestion-list {
+      margin-top: 4px;
+      padding-left: 14px;
+    }
+
+    .suggestion-item {
+      margin-bottom: 2px;
+    }
+
+    .suggestion-item strong {
+      color: #e5e7eb;
+    }
+
+    .price-highlight {
+      color: #fed7aa;
+      font-weight: 600;
+    }
+
+    .strike {
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
+    .badge-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+      margin-top: 4px;
+    }
+
+    .badge-small.good {
+      border-color: rgba(234, 179, 8, 0.9);
+      background: var(--accent-soft);
+      color: #ffedd5;
+    }
+
+    .badge-small.bad {
+      border-color: rgba(220, 38, 38, 0.9);
+      background: var(--danger-soft);
+      color: #fecaca;
+    }
+
+    .stock-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #eab308;
+    }
+
+    .stock-dot.bad {
+      background: #dc2626;
+    }
+
+    .typing {
+      display: inline-flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .typing-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+      animation: blink 1.3s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.25; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-1px); }
+      100% { opacity: 0.25; transform: translateY(0); }
+    }
+
+    .quick-actions {
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .qa-btn {
+      flex: 1 1 calc(50% - 4px);
+      min-width: 0;
+      padding: 7px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.98);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 64, 175, 0.98));
+      color: var(--text-soft);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .qa-btn span.icon {
+      font-size: 13px;
+    }
+
+    .qa-btn strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .qa-btn:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 6px;
+    }
+
+    .input-shell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: rgba(15, 23, 42, 0.99);
+      border: 1px solid rgba(31, 41, 55, 0.98);
+    }
+
+    .input-shell input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      font-size: 12px;
+      outline: none;
+      padding: 3px 0;
+    }
+
+    .input-shell input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .send-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #fb7185, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #320716;
+      cursor: pointer;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .send-btn:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    @media (max-height: 640px) {
+      .frame-inner {
+        padding-top: 6px;
+      }
+      .product-card {
+        padding: 8px;
+      }
+      .qa-btn {
+        padding: 6px 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-root">
+    <div class="frame-inner">
+      <div class="top-safe"></div>
+
+      <!-- BuzzFeed brand row -->
+      <div class="brand-bar">
+        <div class="brand-left">
+          <div class="brand-logo-circle">B</div>
+          <div>
+            <div class="brand-name">BuzzFeed</div>
+            <div class="brand-tag">You tapped this from a BuzzFeed article</div>
+          </div>
+        </div>
+        <div class="brand-pill">Beauty pick</div>
+      </div>
+
+      <!-- Handoff explanation and CTA at the top -->
+      <div class="handoff">
+        <div class="handoff-copy">
+          Answer your questions here, then continue to the retailer to pick shade and complete your order.
+        </div>
+        <button id="continueBtn" class="cta-btn small">
+          Continue · $42.00
+          <span class="cta-btn-icon">↗︎</span>
+        </button>
+      </div>
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-main">
+          <div class="headline">
+            Your <span class="headline-gradient">beauty shopping assistant</span>
+          </div>
+          <div class="subtitle">
+            Before you check out, get help with skin type, alternatives, and the best price.
+          </div>
+        </div>
+        <div class="badge-beta">
+          <span class="badge-dot"></span>
+          <span>AI preview</span>
+        </div>
+      </div>
+
+      <!-- Product summary -->
+      <div class="product-card" id="productCard">
+        <div class="product-image">
+          ✨
+        </div>
+        <div class="product-meta">
+          <div class="product-title" id="productTitle">
+            RadianceBoost 15% Vitamin C Brightening Serum
+          </div>
+          <div class="product-retailer" id="productRetailer">
+            Retailer: Amazon
+          </div>
+          <div class="pill-row">
+            <div class="pill">
+              ★ 4.6 · <strong>4,812 reviews</strong>
+            </div>
+            <div class="pill">
+              <span class="price" id="productPrice">$42.00</span>
+            </div>
+          </div>
+          <div class="pill-row">
+            <div class="pill">
+              Skin type: <strong>Normal · Combination · Dull</strong>
+            </div>
+            <div class="pill">
+              <span class="stock-ok" id="stockStatusText">In stock · Ships in 1 to 2 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat area -->
+      <div class="chat-wrapper">
+        <div class="chat-window">
+          <div id="chatScroll" class="chat-scroll"></div>
+
+          <!-- Quick actions -->
+          <div class="quick-actions">
+            <button class="qa-btn" data-action="reviews">
+              <span class="icon">📝</span>
+              <span><strong>Read more reviews</strong><br />Filter by skin type</span>
+            </button>
+            <button class="qa-btn" data-action="bundles">
+              <span class="icon">🧴</span>
+              <span><strong>Build a routine</strong><br />Cleanser, serum, SPF</span>
+            </button>
+            <button class="qa-btn" data-action="similar">
+              <span class="icon">🔁</span>
+              <span><strong>Find alternatives</strong><br />Similar formulas</span>
+            </button>
+            <button class="qa-btn" data-action="betterPrice">
+              <span class="icon">🏷️</span>
+              <span><strong>Check price</strong><br />Other retailers</span>
+            </button>
+            <button class="qa-btn" data-action="stock">
+              <span class="icon">📦</span>
+              <span><strong>Stock check</strong><br />Out of stock plan</span>
+            </button>
+          </div>
+
+          <!-- Input row -->
+          <div class="input-row">
+            <div class="input-shell">
+              <input id="userInput" type="text" placeholder='Ask anything... "Is this ok for sensitive skin?"' />
+            </div>
+            <button id="sendBtn" class="send-btn" aria-label="Send">
+              ⬆︎
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const product = {
+      name: "RadianceBoost 15% Vitamin C Brightening Serum",
+      retailer: "Amazon",
+      // This is a real Amazon domain. Replace the ASIN with any product you like.
+      currentRetailerUrl: "https://www.amazon.com/dp/B07S893PZ7",
+      sku: "RB-VC15",
+      price: 42.0,
+      inStock: true,
+      backorder: false,
+      reviews: [
+        {
+          title: "Noticeable glow in 3 weeks",
+          snippet: "My acne marks faded faster than usual and my foundation sits better. No stinging for my combo skin.",
+          rating: 5,
+          persona: "Combo skin with dark spots"
+        },
+        {
+          title: "Good results but strong at first",
+          snippet: "I had slight tingling the first few uses. Using it every other night and layering moisturizer helped a lot.",
+          rating: 4,
+          persona: "Mildly sensitive skin"
+        },
+        {
+          title: "Nice under makeup",
+          snippet: "Layers well under sunscreen and makeup without pilling. Gives a healthy sheen instead of oiliness.",
+          rating: 5,
+          persona: "Makeup wearer, normal skin"
+        }
+      ],
+      bundles: [
+        {
+          name: "Gentle gel cleanser",
+          price: 16.0,
+          why: "cleans without stripping which helps vitamin C absorb better"
+        },
+        {
+          name: "Ceramide barrier cream",
+          price: 24.0,
+          why: "supports barrier so active ingredients feel less irritating"
+        },
+        {
+          name: "Lightweight SPF 50",
+          price: 22.0,
+          why: "locks in brightening results and protects against new spots"
+        }
+      ],
+      similar: [
+        {
+          name: "RadianceBoost Vitamin C Serum (Fragrance Free)",
+          price: 44.0,
+          angle: "same brightening focus but gentler for sensitive skin"
+        },
+        {
+          name: "GlowDrop 12% Vitamin C + E",
+          price: 38.0,
+          angle: "slightly lower strength with added antioxidants"
+        },
+        {
+          name: "DailyShield Vitamin C Moisturizer",
+          price: 35.0,
+          angle: "2 in 1 moisturizer for very simple routines"
+        }
+      ],
+      altRetailers: [
+        {
+          name: "BeautyBay Street",
+          price: 40.0,
+          perk: "10 percent off first order and free samples",
+          link: "https://www.amazon.com/s?k=vitamin+c+serum"
+        },
+        {
+          name: "RadiantRoom",
+          price: 39.0,
+          perk: "free shipping over 35 dollars and deluxe mini gift",
+          link: "https://www.amazon.com/s?k=brightening+serum"
+        }
+      ],
+      oosAlternatives: [
+        {
+          name: "GlowDrop 12% Vitamin C + E",
+          price: 38.0,
+          angle: "very similar brightening effect and in stock this week"
+        },
+        {
+          name: "DailyShield Vitamin C Moisturizer",
+          price: 35.0,
+          angle: "simpler step for people who do not want a long routine"
+        }
+      ]
+    };
+
+    const chatScroll = document.getElementById("chatScroll");
+    const userInput = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const continueBtn = document.getElementById("continueBtn");
+
+    function formatPrice(value) {
+      return "$" + value.toFixed(2);
+    }
+
+    function initProductCard() {
+      document.getElementById("productTitle").textContent = product.name;
+      document.getElementById("productRetailer").textContent = "Retailer: " + product.retailer;
+      document.getElementById("productPrice").textContent = formatPrice(product.price);
+      const stockText = document.getElementById("stockStatusText");
+
+      if (!product.inStock) {
+        stockText.textContent = "Out of stock at " + product.retailer;
+        stockText.classList.remove("stock-ok");
+        stockText.classList.add("stock-bad");
+      } else if (product.backorder) {
+        stockText.textContent = "Back order, ships in 2 to 3 weeks";
+        stockText.classList.remove("stock-ok");
+        stockText.classList.add("stock-bad");
+      } else {
+        stockText.textContent = "In stock · Ships in 1 to 2 days";
+        stockText.classList.remove("stock-bad");
+        stockText.classList.add("stock-ok");
+      }
+    }
+
+    function createMessageElement(role, html) {
+      const row = document.createElement("div");
+      row.className = "chat-row " + role;
+
+      const avatar = document.createElement("div");
+      avatar.className = "avatar " + (role === "user" ? "avatar-user" : "");
+      avatar.textContent = role === "user" ? "You" : "AI";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble " + (role === "user" ? "bubble-user" : "bubble-assistant");
+      bubble.innerHTML = html;
+
+      if (role === "assistant") {
+        row.appendChild(avatar);
+        row.appendChild(bubble);
+      } else {
+        row.appendChild(bubble);
+        row.appendChild(avatar);
+      }
+
+      return row;
+    }
+
+    function appendMessage(role, html) {
+      const el = createMessageElement(role, html);
+      chatScroll.appendChild(el);
+      chatScroll.scrollTop = chatScroll.scrollHeight;
+    }
+
+    function showTyping() {
+      const row = document.createElement("div");
+      row.className = "chat-row assistant typing-row";
+
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.textContent = "AI";
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble bubble-assistant";
+      bubble.innerHTML = `
+        <div class="typing">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      `;
+
+      row.appendChild(avatar);
+      row.appendChild(bubble);
+      chatScroll.appendChild(row);
+      chatScroll.scrollTop = chatScroll.scrollHeight;
+
+      return row;
+    }
+
+    function removeTyping(row) {
+      if (row && row.parentNode) {
+        row.parentNode.removeChild(row);
+      }
+    }
+
+    function handleReviews() {
+      const first = product.reviews[0];
+      const rest = product.reviews.slice(1);
+      return `
+        Here is how people with different skin concerns feel about ${product.name.split(" Brightening")[0]}:
+        <ul class="suggestion-list">
+          <li class="suggestion-item"><strong>${first.title}</strong> · ★${first.rating} from ${first.persona}<br />“${first.snippet}”</li>
+          ${rest
+            .map(
+              r => `
+            <li class="suggestion-item"><strong>${r.title}</strong> · ★${r.rating}<br />“${r.snippet}”</li>
+          `
+            )
+            .join("")}
+        </ul>
+        <small>I surfaced reviews that talk about glow, irritation, and how it wears under makeup so you can decide faster.</small>
+      `;
+    }
+
+    function handleBundles() {
+      return `
+        To get the best result from this serum, most people like to keep a simple routine:
+        <ul class="suggestion-list">
+          ${product.bundles
+            .map(
+              b => `
+            <li class="suggestion-item"><strong>${b.name}</strong> · about <span class="price-highlight">${formatPrice(
+                b.price
+              )}</span><br />Why: ${b.why}.</li>
+          `
+            )
+            .join("")}
+        </ul>
+        <small>On the retailer page you can add these as you pick your shade. This keeps your routine beginner friendly and does not overload your skin with actives.</small>
+      `;
+    }
+
+    function handleSimilar() {
+      return `
+        Want to compare before you commit? Here are similar alternatives:
+        <ul class="suggestion-list">
+          ${product.similar
+            .map(
+              s => `
+            <li class="suggestion-item"><strong>${s.name}</strong> · about ${formatPrice(s.price)}<br />Best for: ${s.angle}.</li>
+          `
+            )
+            .join("")}
+        </ul>
+        <small>If you have very sensitive skin or already use other actives like retinol, the gentler or two in one options above are the safer starting point.</small>
+      `;
+    }
+
+    function handleBetterPrice() {
+      const here = formatPrice(product.price);
+      const bestAlt = product.altRetailers.reduce((best, r) => (r.price < best.price ? r : best), product.altRetailers[0]);
+      const savings = product.price - bestAlt.price;
+
+      return `
+        Here is a quick price check for this serum:
+        <ul class="suggestion-list">
+          <li class="suggestion-item">
+            <strong>${product.retailer}</strong> (current path) · <span class="strike">${here}</span>
+          </li>
+          ${product.altRetailers
+            .map(
+              r => `
+            <li class="suggestion-item">
+              <strong>${r.name}</strong> · <span class="price-highlight">${formatPrice(r.price)}</span><br />
+              Perk: ${r.perk}.
+            </li>
+          `
+            )
+            .join("")}
+        </ul>
+        <div class="badge-small good">
+          <span class="stock-dot"></span>
+          Best value right now looks like ${bestAlt.name} at ${formatPrice(bestAlt.price)} which is about ${formatPrice(
+        savings
+      )} less.
+        </div>
+        <small>For this demo you will still go to ${product.retailer}. In production this step can route you straight to the best price without breaking BuzzFeed tracking.</small>
+      `;
+    }
+
+    function handleStock() {
+      if (!product.inStock || product.backorder) {
+        const badgeClass = "badge-small bad";
+        const dotClass = "stock-dot bad";
+        const statusText = !product.inStock ? "Out of stock today" : "Back order only right now";
+        return `
+          Quick stock check for ${product.retailer}:
+          <div class="${badgeClass}">
+            <span class="${dotClass}"></span>
+            ${statusText} at ${product.retailer}.
+          </div>
+          <br />
+          Here are alternatives with similar benefits that you can actually get:
+          <ul class="suggestion-list">
+            ${product.oosAlternatives
+              .map(
+                a => `
+              <li class="suggestion-item"><strong>${a.name}</strong> · ${formatPrice(a.price)}<br />Why: ${a.angle}.</li>
+            `
+              )
+              .join("")}
+          </ul>
+          <small>In a live setup, I can send you straight to one of these in stock options and still keep the original BuzzFeed click information.</small>
+        `;
+      }
+      return `
+        Good news. This serum is showing as:
+        <div class="badge-small good">
+          <span class="stock-dot"></span>
+          In stock at ${product.retailer}, estimated delivery in 2 to 4 days.
+        </div>
+        <br />
+        <small>If it sells out while you browse, I can automatically surface close alternatives that are ready to ship.</small>
+      `;
+    }
+
+    function generateFreeformAnswer(question) {
+      const q = question.toLowerCase();
+      if (q.includes("review") || q.includes("reviews") || q.includes("good")) {
+        return handleReviews();
+      }
+      if (q.includes("bundle") || q.includes("routine") || q.includes("together")) {
+        return handleBundles();
+      }
+      if (q.includes("similar") || q.includes("dupe") || q.includes("alternative") || q.includes("compare")) {
+        return handleSimilar();
+      }
+      if (q.includes("price") || q.includes("cheaper") || q.includes("deal")) {
+        return handleBetterPrice();
+      }
+      if (q.includes("stock") || q.includes("available") || q.includes("back order")) {
+        return handleStock();
+      }
+      if (q.includes("sensitive") || q.includes("irritation") || q.includes("burn")) {
+        return `
+          For sensitive skin the main questions are strength, texture, and how you layer it.
+          <ul class="suggestion-list">
+            <li class="suggestion-item"><strong>Strength</strong> · This is 15 percent vitamin C which is active but still in a range most mildly sensitive users tolerate if they go slow.</li>
+            <li class="suggestion-item"><strong>How to start</strong> · Use it every other morning on dry skin, followed by barrier cream and sunscreen.</li>
+            <li class="suggestion-item"><strong>Back up option</strong> · If you are very reactive, the fragrance free or lower strength alternatives I mentioned are safer starting points.</li>
+          </ul>
+          <small>If you tell me your skin type and what else you use, I can suggest a simple routine using this or a similar serum.</small>
+        `;
+      }
+      if (q.includes("makeup") || q.includes("foundation") || q.includes("under makeup")) {
+        return `
+          This serum is designed to sit well under makeup:
+          <ul class="suggestion-list">
+            <li class="suggestion-item"><strong>Texture</strong> · Lightweight and not oily once it sets, which helps foundation glide on.</li>
+            <li class="suggestion-item"><strong>Layering order</strong> · Cleanser, serum, light moisturizer, then sunscreen. Makeup goes last.</li>
+            <li class="suggestion-item"><strong>Pilling check</strong> · Reviews call out that it does not pill with most silicone based primers.</li>
+          </ul>
+          <small>If your base is very matte, a hydrating primer on top of this can keep things from looking flat.</small>
+        `;
+      }
+      return `
+        I can help you decide if this serum fits your skin and budget:
+        <ul class="suggestion-list">
+          <li class="suggestion-item">See focused reviews for your skin type and main concern.</li>
+          <li class="suggestion-item">Build a simple routine around this so you know what to pair it with.</li>
+          <li class="suggestion-item">Find close alternatives or more affordable options at other retailers.</li>
+          <li class="suggestion-item">Avoid dead ends if it is out of stock by routing you to similar in stock formulas.</li>
+        </ul>
+        <small>Try asking “Is this ok for sensitive skin?”, “What routine should I use with this?”, or tap one of the quick actions above.</small>
+      `;
+    }
+
+    function handleSend(text) {
+      const trimmed = text.trim();
+      if (!trimmed) return;
+
+      appendMessage("user", trimmed);
+      userInput.value = "";
+
+      const typingRow = showTyping();
+
+      setTimeout(() => {
+        removeTyping(typingRow);
+        const answer = generateFreeformAnswer(trimmed);
+        appendMessage("assistant", answer);
+      }, 650);
+    }
+
+    function onQuickActionClick(action) {
+      let userPromptLabel = "";
+      let answerHtml = "";
+
+      switch (action) {
+        case "reviews":
+          userPromptLabel = "Show me reviews for my skin type.";
+          answerHtml = handleReviews();
+          break;
+        case "bundles":
+          userPromptLabel = "What else should I use with this serum?";
+          answerHtml = handleBundles();
+          break;
+        case "similar":
+          userPromptLabel = "Are there any similar alternatives to this serum?";
+          answerHtml = handleSimilar();
+          break;
+        case "betterPrice":
+          userPromptLabel = "Is there a better price somewhere else?";
+          answerHtml = handleBetterPrice();
+          break;
+        case "stock":
+          userPromptLabel = "What happens if this is out of stock?";
+          answerHtml = handleStock();
+          break;
+      }
+
+      appendMessage("user", userPromptLabel);
+
+      const typingRow = showTyping();
+      setTimeout(() => {
+        removeTyping(typingRow);
+        appendMessage("assistant", answerHtml);
+      }, 550);
+    }
+
+    sendBtn.addEventListener("click", () => {
+      handleSend(userInput.value);
+    });
+
+    userInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleSend(userInput.value);
+      }
+    });
+
+    document.querySelectorAll(".qa-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const action = btn.getAttribute("data-action");
+        onQuickActionClick(action);
+      });
+    });
+
+    continueBtn.addEventListener("click", () => {
+      window.location.href = product.currentRetailerUrl;
+    });
+
+    function initChat() {
+      appendMessage(
+        "assistant",
+        `You clicked a beauty pick in a BuzzFeed article. Before I send you to <strong>${product.retailer}</strong>, your shopping assistant can help with reviews, routines, alternatives, and price.<br /><br />
+        What would you like to do first?`
+      );
+    }
+
+    initProductCard();
+    initChat();
+  </script>
+</body>
+</html>
 
