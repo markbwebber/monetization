@@ -670,7 +670,7 @@
       </div>
 
       <!-- Product summary -->
-      <div class="product-card" id="productCard">
+      <div class="product-card">
         <div class="product-image">
           ✨
         </div>
@@ -759,27 +759,28 @@
     //  HIGH LEVEL CONFIG BLOCK
     // =========================
 
-    // All the ASINs in one place
+    // All the ASINs in one place - these are actually used below
     const ASINS = {
-      main: "B0FH9PB6BL",          // main product
-      fragranceFree: "B074PTZCNX", // alt 1
-      glowDrop: "B09MZNYLT2",      // alt 2
-      moisturizer: "B0DK41BDBD"     // alt 3
+      main: "B0FH9PB6BL",       // main product (Continue button uses this)
+      fragranceFree: "B074PTZCNX", // alternative 1
+      glowDrop: "B09MZNYLT2",      // alternative 2
+      moisturizer: "B0DK41BDBD"    // alternative 3
     };
 
-    // Helper to build Amazon URLs from ASIN
-    function amazonDp(asin) {
-      return asin ? "https://www.amazon.com/dp/" + asin : "#";
+    // Helper that converts an ASIN into a working Amazon dp URL
+    function amazonUrlFromAsin(asin) {
+      if (!asin) return "#";
+      return "https://www.amazon.com/dp/" + asin;
     }
 
-    // Main UI copy in one config
+    // All the visible copy
     const TEXT = {
       brandName: "BuzzFeed",
       brandTag: "You tapped this from a BuzzFeed article",
       brandPill: "Beauty pick",
 
       handoffCopy:
-        "Answer your questions here, then continue to the retailer to complete your order.",
+        "Answer your questions here, then continue to the retailer to pick shade and complete your order.",
 
       headlinePrefix: "Your ",
       headlineHighlight: "beauty shopping assistant",
@@ -788,51 +789,30 @@
 
       badgeLabel: "AI preview",
 
-      // Product summary
       productName: "RadianceBoost 15% Vitamin C Brightening Serum",
       retailerName: "Amazon",
       reviewStats: "★ 4.6 · 4,812 reviews",
       skinTypeLabel: "Skin type: Normal · Combination · Dull",
 
-      // Price
       price: 42.0,
 
-      // Stock messages
       stockInStock: "In stock · Ships in 1 to 2 days",
       stockBackorder: "Back order, ships in 2 to 3 weeks",
       stockOut: "Out of stock at Amazon",
 
-      // Chat intro
       chatIntroLine1: "You clicked a beauty pick in a BuzzFeed article.",
       chatIntroLine2:
         "Before I send you to Amazon, your shopping assistant can help with reviews, routines, alternatives, and price.",
       chatIntroPrompt: "What would you like to do first?",
 
-      // Input placeholder
       inputPlaceholder: 'Ask anything... "Is this ok for sensitive skin?"',
 
-      // Quick action labels
       qa: {
-        reviews: {
-          title: "Read more reviews",
-          subtitle: "Filter by skin type"
-        },
-        bundles: {
-          title: "Build a routine",
-          subtitle: "Cleanser, serum, SPF"
-        },
-        similar: {
-          title: "Find alternatives",
-          subtitle: "Similar formulas"
-        },
-        price: {
-          title: "Check price",
-          subtitle: "Other retailers"
-        },
-        stock: {
-          title: "Stock check",
-          subtitle: "Out of stock plan"
-        }
+        reviews: { title: "Read more reviews", subtitle: "Filter by skin type" },
+        bundles: { title: "Build a routine", subtitle: "Cleanser, serum, SPF" },
+        similar: { title: "Find alternatives", subtitle: "Similar formulas" },
+        price: { title: "Check price", subtitle: "Other retailers" },
+        stock: { title: "Stock check", subtitle: "Out of stock plan" }
       }
     };
 
@@ -843,7 +823,7 @@
     const product = {
       name: TEXT.productName,
       retailer: TEXT.retailerName,
-      currentRetailerUrl: amazonDp(ASINS.main),
+      currentRetailerUrl: amazonUrlFromAsin(ASINS.main), // Continue button uses this
       sku: "RB-VC15",
       price: TEXT.price,
       inStock: true,
@@ -888,27 +868,28 @@
           why: "locks in brightening results and protects against new spots"
         }
       ],
-      // Alternatives with Amazon links built from ASINs
+      // Alternatives using ASINS above
       similar: [
         {
           name: "RadianceBoost Vitamin C Serum (Fragrance Free)",
           price: 44.0,
           angle: "same brightening focus but gentler for sensitive skin",
-          url: amazonDp(ASINS.fragranceFree)
+          url: amazonUrlFromAsin(ASINS.fragranceFree) // uses ASINS.fragranceFree
         },
         {
           name: "GlowDrop 12% Vitamin C + E",
           price: 38.0,
           angle: "slightly lower strength with added antioxidants",
-          url: amazonDp(ASINS.glowDrop)
+          url: amazonUrlFromAsin(ASINS.glowDrop) // uses ASINS.glowDrop
         },
         {
           name: "DailyShield Vitamin C Moisturizer",
           price: 35.0,
           angle: "two in one moisturizer for very simple routines",
-          url: amazonDp(ASINS.moisturizer)
+          url: amazonUrlFromAsin(ASINS.moisturizer) // uses ASINS.moisturizer
         }
       ],
+      // Price check stays generic search for now
       altRetailers: [
         {
           name: "BeautyBay Street",
@@ -923,18 +904,19 @@
           link: "https://www.amazon.com/s?k=brightening+serum"
         }
       ],
+      // Out of stock alternatives also tied to ASINS
       oosAlternatives: [
         {
           name: "GlowDrop 12% Vitamin C + E",
           price: 38.0,
           angle: "very similar brightening effect and in stock this week",
-          url: amazonDp(ASINS.glowDrop)
+          url: amazonUrlFromAsin(ASINS.glowDrop)
         },
         {
           name: "DailyShield Vitamin C Moisturizer",
           price: 35.0,
           angle: "simpler step for people who do not want a long routine",
-          url: amazonDp(ASINS.moisturizer)
+          url: amazonUrlFromAsin(ASINS.moisturizer)
         }
       ]
     };
@@ -953,7 +935,6 @@
     }
 
     function initStaticUI() {
-      // Top brand and header
       document.getElementById("brandName").textContent = TEXT.brandName;
       document.getElementById("brandTag").textContent = TEXT.brandTag;
       document.getElementById("brandPill").textContent = TEXT.brandPill;
@@ -969,7 +950,6 @@
       document.getElementById("subtitle").textContent = TEXT.subtitle;
       document.getElementById("badgeLabel").textContent = TEXT.badgeLabel;
 
-      // Product header bits
       document.getElementById("productTitle").textContent = product.name;
       document.getElementById("productRetailer").textContent =
         "Retailer: " + product.retailer;
@@ -980,7 +960,6 @@
       document.getElementById("skinTypeLabel").textContent =
         TEXT.skinTypeLabel;
 
-      // Stock label
       const stockText = document.getElementById("stockStatusText");
       if (!product.inStock) {
         stockText.textContent = TEXT.stockOut;
@@ -996,7 +975,6 @@
         stockText.classList.add("stock-ok");
       }
 
-      // Quick action labels
       document.getElementById("qaReviewsTitle").textContent =
         TEXT.qa.reviews.title;
       document.getElementById("qaReviewsSubtitle").textContent =
@@ -1022,7 +1000,6 @@
       document.getElementById("qaStockSubtitle").textContent =
         TEXT.qa.stock.subtitle;
 
-      // Input placeholder
       userInput.setAttribute("placeholder", TEXT.inputPlaceholder);
     }
 
@@ -1217,7 +1194,7 @@
         formatPrice(savings) +
         " less." +
         "</div>" +
-        '<small>For this demo you will still go to Amazon. In production this step can route you straight to the best price without breaking BuzzFeed tracking.</small>'
+        '<small>For this demo you will still go to Amazon. In a real build this step can route you straight to the best price without breaking BuzzFeed tracking.</small>'
       );
     }
 
@@ -1265,7 +1242,7 @@
             })
             .join("") +
           "</ul>" +
-          '<small>Tap a product name to open it on Amazon. In a live setup, I can send you straight to one of these in stock options and still keep the original BuzzFeed click information.</small>'
+          '<small>Tap a product name to open it on Amazon. In a real setup I can send you straight to one of these in stock options and still keep the original BuzzFeed click information.</small>'
         );
       }
       return (
@@ -1277,7 +1254,7 @@
         ", estimated delivery in 2 to 4 days." +
         "</div>" +
         "<br />" +
-        '<small>If it sells out while you browse, I can automatically surface close alternatives that are ready to ship.</small>'
+        '<small>If it sells out while you browse I can automatically surface close alternatives that are ready to ship.</small>'
       );
     }
 
@@ -1326,7 +1303,7 @@
           '<li class="suggestion-item"><strong>How to start</strong> · Use it every other morning on dry skin, followed by barrier cream and sunscreen.</li>' +
           '<li class="suggestion-item"><strong>Back up option</strong> · If you are very reactive, the fragrance free or lower strength alternatives I mentioned are safer starting points.</li>' +
           "</ul>" +
-          '<small>If you tell me your skin type and what else you use, I can suggest a simple routine using this or a similar serum.</small>'
+          '<small>If you tell me your skin type and what else you use I can suggest a simple routine using this or a similar serum.</small>'
         );
       }
       if (
@@ -1421,6 +1398,7 @@
     });
 
     continueBtn.addEventListener("click", function () {
+      // Uses ASINS.main via product.currentRetailerUrl
       window.location.href = product.currentRetailerUrl;
     });
 
@@ -1434,12 +1412,12 @@
       appendMessage("assistant", intro);
     }
 
-    // Init
     initStaticUI();
     initChat();
   </script>
 </body>
 </html>
+
 
 
 
